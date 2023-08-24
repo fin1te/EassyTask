@@ -7,11 +7,9 @@ import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.finite.eassytask.data.repository.LoginRepository
 import com.finite.eassytask.data.repository.ValidationResult
 import com.finite.eassytask.databinding.FragmentForgotPasswordBinding
-import com.finite.eassytask.databinding.FragmentLoginBinding
 import com.finite.eassytask.databinding.FragmentNewPasswordBinding
 import com.finite.eassytask.databinding.FragmentResetPasswordBinding
 

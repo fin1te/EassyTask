@@ -1,10 +1,10 @@
 package com.finite.eassytask.ui.auth.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.finite.eassytask.R
@@ -48,7 +48,11 @@ class NewPasswordFragment : Fragment() {
                 findNavController().navigate(R.id.action_newPasswordFragment_to_onboardingFragment)
 
                 viewModel.clearOtpValidationResult()
-                Snackbar.make(requireView(), "Password successfully changed!", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView(),
+                    "Password successfully changed!",
+                    Snackbar.LENGTH_SHORT
+                ).show()
 
             } else if (validationResult.errors.isEmpty()) {
                 viewModel.clearErrorsPassword(binding)

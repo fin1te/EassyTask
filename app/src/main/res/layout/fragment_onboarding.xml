@@ -32,10 +32,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="All in one fun"
-            android:textStyle="bold"
+            android:text="@string/all_in_one_fun"
             android:textColor="#000"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView2"
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:text="Post - Reel- Gravity- Forum- News- Al"
+            android:text="@string/onboarding_desc"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -61,17 +61,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="?attr/colorPrimary"
-            android:textStyle="bold"
-            android:text="Login"
-            android:textColor="#fff" />
+            android:text="@string/login"
+            android:textColor="#fff"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/signUpButton"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="?attr/materialButtonOutlinedStyle"
-            android:textStyle="bold"
-            android:text="Sign Up" />
+            android:text="@string/sign_up"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

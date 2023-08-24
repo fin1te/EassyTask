@@ -1,10 +1,10 @@
 package com.finite.eassytask.ui.auth.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.finite.eassytask.R
@@ -31,7 +31,8 @@ class ResetPasswordFragment : Fragment() {
 
         binding.apply {
 
-            forgotPasswordDescription.text = "We sent a 6 digits OTP on this number : +91-${viewModel.currentNumber.value}"
+            forgotPasswordDescription.text =
+                "We sent a 6 digits OTP on this number : +91-${viewModel.currentNumber.value}"
 
             resetButton.setOnClickListener {
                 viewModel.validateOtp(

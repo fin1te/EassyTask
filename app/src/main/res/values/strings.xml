@@ -3,4 +3,26 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="forgot_password_description">We sent a 6 digits OTP on this number : +91-</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password_desc">Please enter your registered mobile number, we\'ll send a 6 digit OTP on it.</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="button_send_otp">Send OTP</string>
+    <string name="login">Login</string>
+    <string name="email_id">Email ID</string>
+    <string name="password">Password</string>
+    <string name="or_login_with">or login with</string>
+    <string name="facebook">Facebook</string>
+    <string name="image">Image</string>
+    <string name="google">Google</string>
+    <string name="apple">Apple</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="confirm">Confirm</string>
+    <string name="hintconfirm_password">Confirm Password</string>
+    <string name="set_new_password">Set New Password</string>
+    <string name="all_in_one_fun">All in one fun</string>
+    <string name="onboarding_desc">Post - Reel- Gravity- Forum- News- Al</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_your_6_digit_otp">Enter your 6-digit OTP</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="resend">Resend</string>
 </resources>
