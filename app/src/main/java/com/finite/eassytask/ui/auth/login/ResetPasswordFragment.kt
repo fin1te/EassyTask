@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.finite.eassytask.R
 import com.finite.eassytask.databinding.FragmentResetPasswordBinding
 import com.finite.eassytask.ui.viewmodel.LoginViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class ResetPasswordFragment : Fragment() {
 
@@ -28,10 +29,45 @@ class ResetPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.forgotPasswordDescription.text = "We sent a 6 digits OTP on this number : +91-${viewModel.currentNumber.value}"
 
-        binding.resetButton.setOnClickListener {
-            findNavController().navigate(R.id.action_resetPasswordFragment_to_newPasswordFragment)
+
+        binding.apply {
+
+            forgotPasswordDescription.text = "We sent a 6 digits OTP on this number : +91-${viewModel.currentNumber.value}"
+
+            resetButton.setOnClickListener {
+                viewModel.validateOtp(
+                    binding.otpTextInput.editText?.text.toString().trim()
+                )
+                //findNavController().navigate(R.id.action_resetPasswordFragment_to_newPasswordFragment)
+            }
+
+            resendButton.setOnClickListener {
+                Snackbar.make(requireView(), "New OTP Sent!", Snackbar.LENGTH_SHORT).show()
+            }
+        }
+
+
+        viewModel.otpValidationResult.observe(viewLifecycleOwner) { validationResult ->
+            if (validationResult.isValid) {
+                binding.otpTextInput.clearFocus()
+                viewModel.clearErrorsOtp(binding)
+                viewModel.hideKeyboard(requireContext(), requireView())
+
+                findNavController().navigate(R.id.action_resetPasswordFragment_to_newPasswordFragment)
+
+                viewModel.clearOtpValidationResult()
+                Snackbar.make(requireView(), "OTP Verified!", Snackbar.LENGTH_SHORT).show()
+
+            } else if (validationResult.errors.isEmpty()) {
+                viewModel.clearErrorsOtp(binding)
+            } else {
+                validationResult.errors.forEach {
+                    when (it.first) {
+                        "otp" -> binding.otpTextInput.error = it.second
+                    }
+                }
+            }
         }
     }
 

@@ -54,6 +54,10 @@ class LoginRepository {
             errors.add(Pair("otp", "Enter 6 digit OTP"))
             return false
         }
+        if (otp != "292929") {
+            errors.add(Pair("otp", "Invalid OTP"))
+            return false
+        }
         return true
     }
 

@@ -12,26 +12,39 @@ import com.finite.eassytask.data.repository.LoginRepository
 import com.finite.eassytask.data.repository.ValidationResult
 import com.finite.eassytask.databinding.FragmentForgotPasswordBinding
 import com.finite.eassytask.databinding.FragmentLoginBinding
+import com.finite.eassytask.databinding.FragmentResetPasswordBinding
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     private val loginRepository = LoginRepository()
 
+    // current number live data
+    private val _currentNumber = MutableLiveData<String>("")
+    val currentNumber: LiveData<String> = _currentNumber
+
     // LiveData to hold the validation result of registration
     private val _numberValidationResult = MutableLiveData<ValidationResult>()
     val numberValidationResult: LiveData<ValidationResult> = _numberValidationResult
 
-    // current number live data
-    private val _currentNumber = MutableLiveData<String>("")
-    val currentNumber: LiveData<String> = _currentNumber
+    private val _otpValidationResult = MutableLiveData<ValidationResult>()
+    val otpValidationResult: LiveData<ValidationResult> = _otpValidationResult
 
     fun clearNumberValidationResult() {
         _numberValidationResult.value = ValidationResult(false, emptyList())
     }
 
+    fun clearOtpValidationResult() {
+        _otpValidationResult.value = ValidationResult(false, emptyList())
+    }
+
     fun validatePhoneNumber(phoneNumber: String) {
         val validationResult = loginRepository.validateNumber(phoneNumber)
         _numberValidationResult.value = validationResult
+    }
+
+    fun validateOtp(otp: String) {
+        val validationResult = loginRepository.validateOTP(otp)
+        _otpValidationResult.value = validationResult
     }
 
     fun clearErrorsForNumber(binding: FragmentForgotPasswordBinding, vararg fields: String) {
@@ -52,6 +65,11 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     fun clearErrorsNumber(binding: FragmentForgotPasswordBinding) {
         binding.numberTextInput.error = null
         binding.numberTextInput.isErrorEnabled = false
+    }
+
+    fun clearErrorsOtp(binding: FragmentResetPasswordBinding) {
+        binding.otpTextInput.error = null
+        binding.otpTextInput.isErrorEnabled = false
     }
 
     fun hideKeyboard(context: Context, view: View) {
