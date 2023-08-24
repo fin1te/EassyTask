@@ -56,5 +56,11 @@
         android:id="@+id/newPasswordFragment"
         android:name="com.finite.eassytask.ui.auth.login.NewPasswordFragment"
         android:label="fragment_new_password"
-        tools:layout="@layout/fragment_new_password" />
+        tools:layout="@layout/fragment_new_password" >
+        <action
+            android:id="@+id/action_newPasswordFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

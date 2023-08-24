@@ -27,6 +27,16 @@ class LoginRepository {
         return ValidationResult(errors.isEmpty(), errors)
     }
 
+    fun validatePasswords(password: String, confirmPassword: String): ValidationResult {
+        if(errors.isNotEmpty()) {
+            errors.clear()
+        }
+        validPassword(password)
+        validConfirmPassword(password, confirmPassword)
+
+        return ValidationResult(errors.isEmpty(), errors)
+    }
+
     // checks if the phone number is valid and meets the all requirements
     private fun validPhoneNumber(phoneNumber: String): Boolean {
         val phoneNumberPattern = Regex("^\\d{10}$")

@@ -29,8 +29,6 @@ class ResetPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         binding.apply {
 
             forgotPasswordDescription.text = "We sent a 6 digits OTP on this number : +91-${viewModel.currentNumber.value}"
@@ -39,7 +37,6 @@ class ResetPasswordFragment : Fragment() {
                 viewModel.validateOtp(
                     binding.otpTextInput.editText?.text.toString().trim()
                 )
-                //findNavController().navigate(R.id.action_resetPasswordFragment_to_newPasswordFragment)
             }
 
             resendButton.setOnClickListener {

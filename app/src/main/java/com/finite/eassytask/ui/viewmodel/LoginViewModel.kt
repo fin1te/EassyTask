@@ -12,6 +12,7 @@ import com.finite.eassytask.data.repository.LoginRepository
 import com.finite.eassytask.data.repository.ValidationResult
 import com.finite.eassytask.databinding.FragmentForgotPasswordBinding
 import com.finite.eassytask.databinding.FragmentLoginBinding
+import com.finite.eassytask.databinding.FragmentNewPasswordBinding
 import com.finite.eassytask.databinding.FragmentResetPasswordBinding
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
@@ -29,12 +30,19 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     private val _otpValidationResult = MutableLiveData<ValidationResult>()
     val otpValidationResult: LiveData<ValidationResult> = _otpValidationResult
 
+    private val _passwordValidationResult = MutableLiveData<ValidationResult>()
+    val passwordValidationResult: LiveData<ValidationResult> = _passwordValidationResult
+
     fun clearNumberValidationResult() {
         _numberValidationResult.value = ValidationResult(false, emptyList())
     }
 
     fun clearOtpValidationResult() {
         _otpValidationResult.value = ValidationResult(false, emptyList())
+    }
+
+    fun clearPasswordValidationResult() {
+        _passwordValidationResult.value = ValidationResult(false, emptyList())
     }
 
     fun validatePhoneNumber(phoneNumber: String) {
@@ -47,15 +55,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         _otpValidationResult.value = validationResult
     }
 
-    fun clearErrorsForNumber(binding: FragmentForgotPasswordBinding, vararg fields: String) {
-        fields.forEach {
-            when (it) {
-                "phoneNumber" -> {
-                    binding.numberTextInput.error = null
-                    binding.numberTextInput.isErrorEnabled = false
-                }
-            }
-        }
+    fun validatePassword(password: String, confirmPassword: String) {
+        val validationResult = loginRepository.validatePasswords(password, confirmPassword)
+        _passwordValidationResult.value = validationResult
     }
 
     fun setCurrentNumber(phoneNumber: String) {
@@ -70,6 +72,13 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     fun clearErrorsOtp(binding: FragmentResetPasswordBinding) {
         binding.otpTextInput.error = null
         binding.otpTextInput.isErrorEnabled = false
+    }
+
+    fun clearErrorsPassword(binding: FragmentNewPasswordBinding) {
+        binding.passwordTextInput.error = null
+        binding.passwordTextInput.isErrorEnabled = false
+        binding.confirmPasswordTextInput.error = null
+        binding.confirmPasswordTextInput.isErrorEnabled = false
     }
 
     fun hideKeyboard(context: Context, view: View) {
