@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.View
+import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.finite.eassytask.ui.viewmodel.LoginViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
